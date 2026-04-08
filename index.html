@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia Sazaki - Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(90deg, #3a3a3a 0%, #5a5a5a 50%, #3a3a3a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* HEADER */
+        .header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(rgba(58,58,58,0.7), rgba(58,58,58,0.5)), 
+                        url('https://pbs.twimg.com/media/GctFdR9WAAACTeR?format=jpg&name=medium');
+            background-size: cover;
+            background-position: center 25%;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FF6B8B, #FFA500);
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        /* LOGOS NO TOPO - 6 COLUNAS */
+        .top-logos {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        
+        .logo-item {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .logo-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-icon img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+        
+        .logo-item:hover .logo-icon {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            transform: scale(1.1);
+        }
+        
+        .logo-name {
+            font-size: 1em;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* GALERIA DE FOTOS - GRID 3-3-1 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px 50px;
+        }
+        
+        /* Últimos 4 cards - ajuste para grid 3-3-1 */
+        .gallery .photo-card:nth-child(4) {
+            grid-column: 1;
+        }
+        
+        .gallery .photo-card:nth-child(5) {
+            grid-column: 2;
+        }
+        
+        .gallery .photo-card:nth-child(6) {
+            grid-column: 3;
+        }
+        
+        .gallery .photo-card:nth-child(7) {
+            grid-column: 2;
+        }
+        
+        .photo-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.08);
+        }
+        
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+        
+        .photo-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-card:hover .photo-container img {
+            transform: scale(1.05);
+        }
+        
+        /* LOGO NO CANTO DA FOTO */
+        .photo-logo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.6);
+            z-index: 2;
+        }
+        
+        .photo-logo img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+        
+        /* NOME DENTRO DA FOTO */
+        .platform-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 18px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            font-size: 1.1em;
+            background: rgba(60, 60, 60, 0.7);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 0;
+            z-index: 2;
+        }
+        
+        /* CORES DAS LOGOS */
+        .privacy { 
+            background: #ffffff;
+            color: white;
+        }
+        .whatsapp { 
+            background: #25D366;
+            color: white;
+        }
+        .telegram { 
+            background: #0088CC;
+            color: white;
+        }
+        .instagram { 
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        .tiktok { 
+            background: #000000;
+            color: white;
+        }
+        .twitter { 
+            background: #1DA1F2;
+            color: white;
+        }
+        .onlyfans {
+            background: #ffffff;
+            color: white;
+        }
+        
+        /* CARD SEM ÍCONE */
+        .no-icon .photo-logo {
+            display: none;
+        }
+        
+        /* Estilo para ícones com imagem */
+        .logo-icon.img-icon,
+        .photo-logo.img-icon {
+            background: rgba(255,255,255,0.95);
+        }
+        
+        .logo-icon.img-icon img,
+        .photo-logo.img-icon img {
+            width: 28px;
+            height: 28px;
+        }
+        
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .header {
+                height: 150px;
+                padding: 0 20px;
+            }
+            
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .top-logos {
+                gap: 25px;
+            }
+            
+            .logo-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6em;
+            }
+            
+            .logo-icon img {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .logo-name {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 20px 30px;
+            }
+            
+            .gallery .photo-card:nth-child(4),
+            .gallery .photo-card:nth-child(5),
+            .gallery .photo-card:nth-child(6),
+            .gallery .photo-card:nth-child(7) {
+                grid-column: auto;
+            }
+        }
+    @keyframes pulsoRoxo {
+    0% {
+        /* Estado inicial: borda normal e sem sombra */
+        border-color: rgba(138, 43, 226, 0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    50% {
+        /* Estado meio: borda acesa e sombra brilhante */
+        border-color: #FF8C00; /* Um roxo mais claro */
+        box-shadow: 0 0 20px #FF4500, 0 0 40px #FFD700; /* Brilho neon */
+    }
+    100% {
+        /* Estado final: volta ao normal */
+        border-color: rgba(138, 43, 226, 0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+}
+
+/* Isso aplica a animação a qualquer coisa com a classe 'piscando' */
+.piscando {
+    /* Nome da animação, duração (1.5 segundos), modo (infinito) */
+    animation: pulsoRoxo 2s infinite;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="profile-container">
+            <img src="https://pbs.twimg.com/profile_images/1706419891425648640/uO3PCJd3.jpg" alt="Sophia Sazaki" class="profile-pic">
+            <div class="name">Sophia Sazaki</div>
+          <p>Sua criadora +18 favorita</p>
+        </div>
+    </div>
+    
+    <div class="top-logos">
+        <div class="logo-item" onclick="window.open('https://privacy.com.br/profile/Baby_Sophy69', '_blank')">
+            <div class="logo-icon privacy">
+                <img src="https://i.imgur.com/3eyn7gr.png">
+            </div>
+            <div class="logo-name">Privacy</div>
+        </div>
+        
+        <div class="logo-item" onclick="window.open('LINK_DO_ONLYFANS', '_blank')">
+            <div class="logo-icon onlyfans">
+                    <img src="https://i.imgur.com/5Asu1sg.jpeg" >
+            </div>
+            <div class="logo-name">OnlyFans</div>
+        </div>
+        
+        <div class="logo-item" onclick="window.open('LINK_DO_TELEGRAM', '_blank')">
+            <div class="logo-icon telegram">
+                <i class="fab fa-telegram"></i>
+            </div>
+            <div class="logo-name">Telegram</div>
+        </div>
+        
+        <div class="logo-item" onclick="window.open('https://x.com/baby_may66?s=21', '_blank')">
+            <div class="logo-icon twitter">
+                <i class="fab fa-twitter"></i>
+            </div>
+            <div class="logo-name">Twitter</div>
+        </div>
+        
+        <div class="logo-item" onclick="window.open('https://www.instagram.com/baby_sophy69?igsh=aHNjN3Vqdmhlczg3&utm_source=qr', '_blank')">
+            <div class="logo-icon instagram">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="logo-name">Instagram</div>
+        </div>
+        
+        <div class="logo-item" onclick="window.open('https://wa.me/message/DOSEVUOXQLCVE1', '_blank')">
+            <div class="logo-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="logo-name">WhatsApp</div>
+        </div>
+        
+        <div class="logo-item" onclick="window.open('https://www.tiktok.com/@baby_sophi69?_r=1&_t=ZS-959GrLxCi9p', '_blank')">
+            <div class="logo-icon tiktok">
+                <i class="fab fa-tiktok"></i>
+            </div>
+            <div class="logo-name">TikTok</div>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <div class="photo-card piscando">
+            <div class="photo-container">
+                <a href="https://privacy.com.br/profile/Baby_Sophy69" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/bvyJcy0V/IMG_20260331_115338_928.jpg" alt="Sophia Privacy">
+                </a>
+                <div class="photo-logo">
+                    <img src="https://i.imgur.com/3eyn7gr.png">
+                </div>
+                <div class="platform-name">Privacy</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="LINK_DO_ONLYFANS" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/yNLN7Mn5/IMG_20260331_115345_331.jpg" alt="Sophia Onlyfans">
+                </a>
+                <div class="photo-logo onlyfans">
+                    <img src="https://i.imgur.com/5Asu1sg.jpeg">
+                </div>
+                <div class="platform-name">OnlyFans</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="LINK_DO_TELEGRAM" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/cJFJdpXG/IMG_20260331_115347_110.jpg" alt="Sophia Telegram">
+                </a>
+                <div class="photo-logo telegram">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="platform-name">Telegram</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://x.com/baby_may66?s=21" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/GpXpbWqC/IMG_20260331_115349_899.jpg" alt="Sophia Twitter">
+                </a>
+                <div class="photo-logo twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <div class="platform-name">Twitter</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.instagram.com/baby_sophy69?igsh=aHNjN3Vqdmhlczg3&utm_source=qr" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/43W3XDBT/IMG_20260331_115351_083.jpg" alt="Sophia Instagram">
+                </a>
+                <div class="photo-logo instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="platform-name">Instagram</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://wa.me/message/DOSEVUOXQLCVE1" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/mrmrTv8t/IMG_20260331_115354_068.jpg" alt="Sophia WhatsApp">
+                </a>
+                <div class="photo-logo whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="platform-name">WhatsApp</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.tiktok.com/@baby_sophi69?_r=1&_t=ZS-959GrLxCi9p" target="_blank" class="photo-link">
+                    <img src="https://i.postimg.cc/GpXpbWqp/IMG_20260331_115352_313.jpg" alt="Sophia TikTok">
+                </a>
+                <div class="photo-logo tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="platform-name">TikTok</div>
+            </div>
+        </div>
+    </div>
+</body>
+  </html>
+  
